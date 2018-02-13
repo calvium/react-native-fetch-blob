@@ -540,8 +540,11 @@ public class RNFetchBlobFS {
         }
         String[] files = new File(path).list();
         WritableArray arg = Arguments.createArray();
-        for (String i : files) {
-            arg.pushString(i);
+        // Add elements to the array just if files is not empty
+        if (files != null) {
+            for (String i : files) {
+                arg.pushString(i);
+            }
         }
         callback.invoke(null, arg);
     }
